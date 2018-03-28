@@ -10,7 +10,7 @@ module RedmineSendToContacts
           @issue = issue
           @issue_url = url_for(:controller => 'issues', :action => 'show', :id => issue)
           @users = contacts
-          mail to: contacts, cc: [], subject: "Test sending issue to contacts"
+          mail to: contacts, cc: [], subject: "[#{issue.project.name} - #{issue.tracker.name} ##{issue.id}] (#{issue.status.name}) #{issue.subject}"
         end
       end
 
