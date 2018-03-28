@@ -1,0 +1,16 @@
+<%= render :partial => 'issue', :formats => [:html], :locals => { :issue => @issue, :users => @users, :issue_url => @issue_url } %>
+<hr />
+
+<% if @issue.journals.any? %>
+  <h3><%= l(:label_history)%></h3>
+  <% @issue.journals.reverse_each do |journal| %>
+    <%= authoring journal.created_on, journal.user, label: :label_updated_time_by %>
+    <ul class="journal details">
+    <% details_to_strings(journal.visible_details, false, :only_path => false).each do |string| %>
+      <li><%= string %></li>
+    <% end %>
+    </ul>
+    <%= textilizable(journal, :notes, :only_path => false) %>
+    <hr />
+  <% end %>
+<% end %>

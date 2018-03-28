@@ -1,3 +1,6 @@
 # English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  label_send: "Send"
+  label_email_to_contacts: "Email to contacts"
+  button_send: "Send"
+  

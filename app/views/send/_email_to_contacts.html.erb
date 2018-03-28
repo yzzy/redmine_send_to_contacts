@@ -1,0 +1,23 @@
+<h3 class="title"><%= l(:label_email_to_contacts) %></h3>
+
+<%= form_tag(send_email_to_contacts_path, remote: true, id: 'email-to-contacts-form') do %>
+
+  <% if issue.present? %>
+    <%= hidden_field_tag 'object_type', issue.class.name.underscore %>
+    <%= hidden_field_tag 'object_id', issue.id %>
+  <% end %>
+  <%= hidden_field_tag 'project_id', @project.id if @project %>
+
+  <div id="issue_contacts" class="tags">
+    <% contacts.order_by_name.visible.each do |contact| %>
+      <li>
+        <%= content_tag 'label', check_box_tag('contact_ids[]', contact.id, !contact.email.empty?, id: nil) + "#{contact.name} (#{contact.email})" %>
+      </li>
+    <% end %>
+  </div>
+
+  <p class="buttons">
+    <%= submit_tag l(:button_send), :name => nil, :onclick => "hideModal(this);" %>
+    <%= submit_tag l(:button_cancel), :name => nil, :onclick => "hideModal(this);", :type => 'button' %>
+  </p>
+<% end %>
