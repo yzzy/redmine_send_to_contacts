@@ -11,6 +11,8 @@
     <% end %>
     </ul>
     <%= textilizable(journal, :notes, :only_path => false) %>
-    <hr />
+    <% unless journal == @issue.journals.first %>
+      <hr />
+    <% end %>
   <% end %>
 <% end %>

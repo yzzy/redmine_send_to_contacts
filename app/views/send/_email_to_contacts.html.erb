@@ -12,7 +12,9 @@
     <div id="issue_contacts" class="tags">
       <% contacts.order_by_name.visible.each do |contact| %>
         <li>
-          <%= content_tag 'label', check_box_tag('contact_ids[]', contact.id, !contact.email.empty?, id: nil) + "#{contact.name} (#{contact.email})" %>
+          <% name_with_email = "#{contact.name}" %>
+          <% name_with_email += " (#{contact.email})" unless contact.email.empty? %>
+          <%= content_tag 'label', check_box_tag('contact_ids[]', contact.id, !contact.email.empty?, id: nil) + name_with_email %>
         </li>
       <% end %>
     </div>
