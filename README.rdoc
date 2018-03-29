@@ -1,3 +1,0 @@
-= redmine_send_to_contacts
-
-Description goes here
