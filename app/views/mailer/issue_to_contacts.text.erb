@@ -1,1 +1,14 @@
-It works!
+<%= render :partial => 'issue', :formats => [:text], :locals => { :issue => @issue, :users => @users, :issue_url => @issue_url } %>
+----------------------------------------
+<% if @issue.journals.any? %>
+  <%= l(:label_history)%>
+  <% @issue.journals.reverse_each do |journal| %>
+    <%= authoring journal.created_on, journal.user, label: :label_updated_time_by %>
+    <% details_to_strings(journal.visible_details, false, :only_path => false).each do |string| %>
+      <%= string %>
+    <% end %>
+    <% if journal.notes? -%>
+      <%= journal.notes %>
+    <% end -%>
+  <% end %>
+<% end %>

@@ -14,7 +14,7 @@ class SendController < ApplicationController
         contact_ids = params[:contact_ids] || []
         contacts = Contact.where(id: contact_ids.flatten).all
         Mailer.send(:issue_to_contacts, @issue, contacts.pluck(:email)).deliver
-        render nothing: true, status: :ok
+        redirect_back_or_default issues_path
       end
     end
   end
