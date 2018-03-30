@@ -9,7 +9,7 @@
     <% end %>
     <%= hidden_field_tag 'project_id', @project.id if @project %>
 
-    <div id="issue_contacts" class="tags">
+    <ul id="issue_contacts" class="contacts">
       <% contacts.order_by_name.visible.each do |contact| %>
         <li>
           <% name_with_email = "#{contact.name}" %>
@@ -17,7 +17,7 @@
           <%= content_tag 'label', check_box_tag('contact_ids[]', contact.id, !contact.email.empty?, id: nil) + name_with_email %>
         </li>
       <% end %>
-    </div>
+    </ul>
   <% else %>
     <div class="nodata">
       <%= simple_format(l(:text_email_delivery_not_configured)) %>

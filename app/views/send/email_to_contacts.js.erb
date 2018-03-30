@@ -1,3 +1,8 @@
-$('#ajax-modal').html('<%= escape_javascript(render :partial => 'send/email_to_contacts', :locals => {:issue => @issue, :contacts => @contacts}) %>');
-showModal('ajax-modal', '400px');
-$('#ajax-modal').addClass('new-watcher');
+<% case request.method_symbol %>
+<% when :get %>
+  $('#ajax-modal').html('<%= escape_javascript(render :partial => 'send/email_to_contacts', :locals => {:issue => @issue, :contacts => @contacts}) %>');
+  showModal('ajax-modal', '400px');
+  $('#ajax-modal').addClass('send-email-modal');
+<% when :post %>
+  window.location.reload();
+<% end %>

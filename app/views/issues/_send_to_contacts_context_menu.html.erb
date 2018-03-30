@@ -1,7 +1,7 @@
 <% if @issue -%>
   <li class="folder">
     <a href="#" class="submenu"><%= l(:label_send) %></a>
-    <ul class="tags">
+    <ul class="contacts">
       <li><%= context_menu_link l(:label_email_to_contacts), send_email_to_contacts_path(:object_type => 'issue', :object_id => @issue.id), :remote => true, :class => 'icon-email' %></li>
     </ul>
   </li>
