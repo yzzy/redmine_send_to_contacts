@@ -3,6 +3,19 @@
   $('#ajax-modal').html('<%= escape_javascript(render :partial => 'send/email_to_contacts', :locals => {:issue => @issue, :contacts => @contacts}) %>');
   showModal('ajax-modal', '400px');
   $('#ajax-modal').addClass('send-email-modal');
+  $('#email-to-contacts-form :checkbox').change(function() {
+    var $submit_btn = $('#submit-email-to-contacts-form');
+    if($('#email-to-contacts-form :checkbox').is(':checked'))
+    {
+      $submit_btn.removeAttr('disabled');
+      $submit_btn.removeClass('ui-state-disabled');
+    }
+    else
+    {
+      $submit_btn.attr('disabled', 'disabled');
+      $submit_btn.addClass('ui-state-disabled');
+    }
+  });
 <% when :post %>
   window.location.reload();
 <% end %>
