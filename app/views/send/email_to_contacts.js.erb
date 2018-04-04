@@ -1,21 +1,20 @@
 <% case request.method_symbol %>
 <% when :get %>
-  $('#ajax-modal').html('<%= escape_javascript(render :partial => 'send/email_to_contacts', :locals => {:issue => @issue, :contacts => @contacts}) %>');
-  showModal('ajax-modal', '400px');
-  $('#ajax-modal').addClass('send-email-modal');
-  $('#email-to-contacts-form :checkbox').change(function() {
+  var submitAvailable = function() {
     var $submit_btn = $('#submit-email-to-contacts-form');
     if($('#email-to-contacts-form :checkbox').is(':checked'))
-    {
-      $submit_btn.removeAttr('disabled');
-      $submit_btn.removeClass('ui-state-disabled');
-    }
+      $submit_btn.removeAttr('disabled').removeClass('ui-state-disabled');
     else
-    {
-      $submit_btn.attr('disabled', 'disabled');
-      $submit_btn.addClass('ui-state-disabled');
-    }
-  });
+      $submit_btn.attr('disabled', 'disabled').addClass('ui-state-disabled');
+  };
+
+  $('#ajax-modal').html('<%= escape_javascript(render :partial => 'send/email_to_contacts', :locals => {:issue => @issue, :contacts => @contacts}) %>');
+  $('#ajax-modal').addClass('send-email-modal');
+
+  $('#email-to-contacts-form :checkbox').on('change', submitAvailable);
+  $(document).ready(submitAvailable);
+
+  showModal('ajax-modal', '400px');
 <% when :post %>
-  window.location.reload();
+  renderFlash();
 <% end %>
