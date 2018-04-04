@@ -1,6 +1,6 @@
 <h3 class="title"><%= l(:label_email_to_contacts) %></h3>
 
-<%= form_tag(send_email_to_contacts_path, remote: true, id: 'email-to-contacts-form') do %>
+<%= form_tag(issue_send_email_to_contacts_path, remote: true, id: 'email-to-contacts-form') do %>
   <% email_enabled = ActionMailer::Base.perform_deliveries %>
   <% if email_enabled %>
     <% if issue.present? %>

@@ -7,16 +7,21 @@ Allows sending emails with issue's details to contacts connected to this issue.
 This plugin works only with [Redmine CRM](http://www.redmine.org/plugins/redmine_contacts) plugin or similar if
 
 - ```Issue``` model has ```contacts``` method which returns contacts connected to this issue and
-- these contact objects has ```email``` method which returns string of comma-separated email addresses
+- these `Contact` objects has ```email``` method which returns string of comma-separated email addresses
 
 ## Installing
 
-1. Clone this repository to `redmine/plugins` directory.
+1. Clone this repository to `redmine/plugins/redmine_send_to_contacts` directory.
 ```
 cd redmine/plugins
 git clone https://github.com/yzzy/redmine_send_to_contacts.git
 ```
-2. Restart your Redmine web server.
+2. Clone `redmine_ajax_helper` repository
+```
+git clone https://github.com/yzzy/redmine_ajax_helper.git
+```
+
+3. Restart your Redmine web server.
 
 ## Removal
 

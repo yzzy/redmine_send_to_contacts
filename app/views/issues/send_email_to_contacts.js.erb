@@ -8,7 +8,7 @@
       $submit_btn.attr('disabled', 'disabled').addClass('ui-state-disabled');
   };
 
-  $('#ajax-modal').html('<%= escape_javascript(render :partial => 'send/email_to_contacts', :locals => {:issue => @issue, :contacts => @contacts}) %>');
+  $('#ajax-modal').html('<%= escape_javascript(render :partial => 'issues/send_email_to_contacts', :locals => {:issue => @issue, :contacts => @contacts}) %>');
   $('#ajax-modal').addClass('send-email-modal');
 
   $('#email-to-contacts-form :checkbox').on('change', submitAvailable);

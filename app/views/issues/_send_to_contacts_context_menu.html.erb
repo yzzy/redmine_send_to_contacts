@@ -2,7 +2,7 @@
   <li class="folder">
     <a href="#" class="submenu"><%= l(:label_send) %></a>
     <ul class="contacts">
-      <li><%= context_menu_link l(:label_email_to_contacts), send_email_to_contacts_path(:object_type => 'issue', :object_id => @issue.id), :remote => true, :class => 'icon-email' %></li>
+      <li><%= context_menu_link l(:label_email_to_contacts), issue_send_email_to_contacts_path(@issue), :remote => true, :class => 'icon-email' %></li>
     </ul>
   </li>
 <% end %>
